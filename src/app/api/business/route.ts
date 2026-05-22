@@ -14,7 +14,7 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const body = await request.json()
-    const { name, description, services, prices, operatingHours, location, whatsappNumberId, ownerId } = body
+    const { name, description, services, prices, operatingHours, location, telegramBotToken, telegramBotUsername, ownerId } = body
     
     const business = await prisma.business.create({
       data: {
@@ -24,7 +24,8 @@ export async function POST(request: Request) {
         prices,
         operatingHours,
         location,
-        whatsappNumberId,
+        telegramBotToken,
+        telegramBotUsername,
         ownerId: ownerId || null,
       },
     })

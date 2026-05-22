@@ -1,6 +1,6 @@
-# WhatsApp AI SaaS
+# Telegram AI SaaS
 
-A SaaS platform that allows businesses to deploy AI-powered WhatsApp bots using Claude API.
+A SaaS platform that allows businesses to deploy AI-powered Telegram bots using Google Gemini API.
 
 ## Getting Started
 
@@ -24,4 +24,4 @@ To get started with local development, please follow the detailed instructions i
 
 ## More Information
 
-This project is built with Next.js, Prisma, and PostgreSQL. It integrates with the WhatsApp Business API and Anthropic's Claude API.
+This project is built with Next.js, Prisma, and PostgreSQL. It integrates with the Telegram Bot API and Google's Gemini API.

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { sendWhatsAppMessage } from '@/lib/whatsapp';
+import { sendTelegramMessage } from '@/lib/telegram';
 
 export async function GET(
   request: NextRequest,
@@ -71,15 +71,15 @@ export async function POST(
       return NextResponse.json({ error: 'Conversation or business not found' }, { status: 404 });
     }
 
-    // 1. Send WhatsApp message
-    if (conversation.business.whatsappNumberId) {
-       await sendWhatsAppMessage(
-        conversation.business.whatsappNumberId,
-        conversation.customerPhone,
+    // 1. Send Telegram message
+    if (conversation.business.telegramBotToken) {
+       await sendTelegramMessage(
+        conversation.business.telegramBotToken,
+        conversation.telegramChatId,
         content
       );
     } else {
-        return NextResponse.json({ error: 'WhatsApp configuration missing' }, { status: 400 });
+        return NextResponse.json({ error: 'Telegram configuration missing' }, { status: 400 });
     }
 
     // 2. Save human message

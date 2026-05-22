@@ -13,7 +13,7 @@ interface Message {
 
 interface Conversation {
   id: string;
-  customerPhone: string;
+  telegramChatId: string;
   status: Status;
   lastMessage: string;
   updatedAt: string;
@@ -137,7 +137,7 @@ export default function ChatsPage() {
                 className={`p-4 border-b cursor-pointer hover:bg-gray-50 transition ${selectedId === conv.id ? 'bg-indigo-50' : ''}`}
               >
                 <div className="flex justify-between items-start mb-1">
-                  <span className="font-medium text-gray-900">{conv.customerPhone}</span>
+                  <span className="font-medium text-gray-900">{conv.telegramChatId}</span>
                   <span className={`text-xs px-2 py-1 rounded-full font-semibold ${getStatusColor(conv.status)}`}>
                     {conv.status}
                   </span>
@@ -159,7 +159,7 @@ export default function ChatsPage() {
             {/* Header */}
             <div className="p-4 border-b flex justify-between items-center">
               <div>
-                <h3 className="text-lg font-semibold text-gray-800">{selectedConversation.customerPhone}</h3>
+                <h3 className="text-lg font-semibold text-gray-800">{selectedConversation.telegramChatId}</h3>
                 <span className={`text-xs px-2 py-1 rounded-full font-semibold ${getStatusColor(selectedConversation.status)}`}>
                   {selectedConversation.status}
                 </span>

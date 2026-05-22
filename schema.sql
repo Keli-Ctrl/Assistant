@@ -1,4 +1,4 @@
--- Database Schema for WhatsApp AI SaaS
+-- Database Schema for Telegram AI SaaS
 
 -- Users (Business Owners)
 CREATE TABLE users (
@@ -19,8 +19,8 @@ CREATE TABLE businesses (
     prices TEXT,
     operating_hours TEXT,
     location TEXT,
-    whatsapp_number_id TEXT UNIQUE,
-    whatsapp_phone_number TEXT,
+    telegram_bot_token TEXT UNIQUE,
+    telegram_bot_username TEXT,
     system_prompt_override TEXT,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
@@ -32,11 +32,11 @@ CREATE TYPE conversation_status AS ENUM ('ACTIVE', 'ESCALATED', 'RESOLVED');
 CREATE TABLE conversations (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     business_id UUID REFERENCES businesses(id) ON DELETE CASCADE,
-    customer_phone TEXT NOT NULL,
+    telegram_chat_id TEXT NOT NULL,
     status conversation_status DEFAULT 'ACTIVE',
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    UNIQUE(business_id, customer_phone)
+    UNIQUE(business_id, telegram_chat_id)
 );
 
 -- Messages

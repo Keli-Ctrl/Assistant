@@ -19,7 +19,7 @@ export async function GET() {
 
     const formattedConversations = conversations.map((conv) => ({
       id: conv.id,
-      customerPhone: conv.customerPhone,
+      telegramChatId: conv.telegramChatId,
       status: conv.status,
       lastMessage: conv.messages[0]?.content || 'No messages yet',
       updatedAt: conv.updatedAt,

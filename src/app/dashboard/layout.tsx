@@ -11,7 +11,7 @@ export default function DashboardLayout({
       {/* Sidebar */}
       <aside className="w-64 bg-white shadow-md">
         <div className="p-6">
-          <h1 className="text-2xl font-bold text-indigo-600">WhatsApp AI</h1>
+          <h1 className="text-2xl font-bold text-indigo-600">Telegram AI</h1>
         </div>
         <nav className="mt-6">
           <Link href="/dashboard" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-indigo-50 hover:text-indigo-600">

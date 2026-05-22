@@ -1,6 +1,6 @@
 # Setup Instructions
 
-This document provides step-by-step instructions to set up the WhatsApp AI SaaS project locally.
+This document provides step-by-step instructions to set up the Telegram AI SaaS project locally.
 
 ## Prerequisites
 
@@ -16,7 +16,7 @@ Before you begin, ensure you have the following installed:
 Clone the project to your local machine:
 ```bash
 git clone <repository-url>
-cd whatsapp-ai-saas
+cd telegram-ai-saas
 ```
 
 ### 2. Install Dependencies
@@ -36,10 +36,8 @@ cp .env.example .env
 Open the `.env` file and fill in the following variables:
 
 - `DATABASE_URL`: The connection string for your PostgreSQL database.
-- `WHATSAPP_VERIFY_TOKEN`: A string of your choice used to verify your webhook in the Meta Developer Portal.
-- `WHATSAPP_API_TOKEN`: The access token provided by the Meta Developer Portal for your WhatsApp Business account.
-- `WHATSAPP_APP_SECRET`: Your Meta App's secret key.
-- `ANTHROPIC_API_KEY`: Your API key for the Claude AI from Anthropic.
+- `TELEGRAM_BOT_TOKEN`: The token provided by @BotFather when you create your bot.
+- `GOOGLE_API_KEY`: Your API key for the Gemini AI from Google AI Studio.
 
 ### 4. Database Setup
 
@@ -63,13 +61,13 @@ The application will be available at `http://localhost:3000`.
 
 ### 6. Webhook Testing Tips
 
-To receive WhatsApp webhooks locally, you need a way to expose your local server to the internet. We recommend using **ngrok**:
+To receive Telegram webhooks locally, you need a way to expose your local server to the internet. We recommend using **ngrok**:
 
 1. Install ngrok: `npm install -g ngrok`
 2. Run ngrok on port 3000: `ngrok http 3000`
 3. Copy the `https` forwarding URL provided by ngrok.
-4. In the Meta Developer Portal, set your Webhook URL to: `<ngrok-url>/api/webhook`
-5. Use the `WHATSAPP_VERIFY_TOKEN` you defined in your `.env` for the verification step.
+4. Set your Telegram Webhook URL by calling:
+   `https://api.telegram.org/bot<YOUR_BOT_TOKEN>/setWebhook?url=<ngrok-url>/api/webhook/telegram/<YOUR_BOT_TOKEN>`
 
 ## Troubleshooting
 

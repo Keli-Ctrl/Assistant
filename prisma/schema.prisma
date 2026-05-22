@@ -27,8 +27,8 @@ model Business {
   prices               String?
   operatingHours       String?        @map("operating_hours")
   location             String?
-  whatsappNumberId     String?        @unique @map("whatsapp_number_id")
-  whatsappPhoneNumber  String?        @map("whatsapp_phone_number")
+  telegramBotToken     String?        @unique @map("telegram_bot_token")
+  telegramBotUsername  String?        @map("telegram_bot_username")
   systemPromptOverride String?        @map("system_prompt_override")
   createdAt            DateTime       @default(now()) @map("created_at")
   updatedAt            DateTime       @default(now()) @updatedAt @map("updated_at")
@@ -47,13 +47,13 @@ model Conversation {
   id            String             @id @default(uuid())
   businessId    String             @map("business_id")
   business      Business           @relation(fields: [businessId], references: [id], onDelete: Cascade)
-  customerPhone String             @map("customer_phone")
-  status        ConversationStatus @default(ACTIVE)
-  createdAt     DateTime           @default(now()) @map("created_at")
-  updatedAt     DateTime           @default(now()) @updatedAt @map("updated_at")
-  messages      Message[]
+  telegramChatId String             @map("telegram_chat_id")
+  status         ConversationStatus @default(ACTIVE)
+  createdAt      DateTime           @default(now()) @map("created_at")
+  updatedAt      DateTime           @default(now()) @updatedAt @map("updated_at")
+  messages       Message[]
 
-  @@unique([businessId, customerPhone])
+  @@unique([businessId, telegramChatId])
   @@index([businessId])
   @@map("conversations")
 }

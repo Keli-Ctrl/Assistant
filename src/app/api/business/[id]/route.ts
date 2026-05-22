@@ -29,7 +29,7 @@ export async function PUT(
   const { id } = await params
   try {
     const body = await request.json()
-    const { name, description, services, prices, operatingHours, location, whatsappNumberId } = body
+    const { name, description, services, prices, operatingHours, location, telegramBotToken, telegramBotUsername } = body
     
     const business = await prisma.business.update({
       where: { id: id },
@@ -40,7 +40,8 @@ export async function PUT(
         prices,
         operatingHours,
         location,
-        whatsappNumberId,
+        telegramBotToken,
+        telegramBotUsername,
       },
     })
     
